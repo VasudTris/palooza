@@ -1,0 +1,48 @@
+<div class="sessions-content">
+	<div class="title">
+		<h2>
+			Modals
+		</h2>
+	</div>
+	<!-- kleine modal -->
+	<div id="modalsContainer" style="display: flex; gap: 60px;">
+		{% for modal in modals %}
+			<div class="small-modal" data-modal-id="{{ modal.id }}" data-bs-toggle="modal" data-bs-target="#myModal-{{ modal.id }}" ondrop="drop(event)" ondragover="event.preventDefault();">
+				{{ modal.nameModal|default('Unnamed Modal') }}
+			</div>
+		{% endfor %}
+		<div class="round-button" id="roundPlusButton">
+			<span class="plus">
+				+
+			</span>
+		</div>
+	</div>
+	{% for modal in modals %}
+		<!-- grote modall (invoervelden moeten ooks een dynamische id hebben zodat het opgeslagen jan worden, anders kan de javascript het niet oppakken)-->
+		<div class="modal fade" style="color: black;" id="myModal-{{ modal.id }}" tabindex="-1" aria-labelledby="exampleModalLabel-{{ modal.id }}" aria-hidden="true">
+			<div class="modal-dialog modal-dialog-centered modal-md">
+				<div class="modal-content">
+					<div class="modal-header">
+						<h5 class="modal-title" id="exampleModalLabel">Naam:
+						</h5>
+						<input type="text" id="modalName-{{ modal.id }}" class="form-control" placeholder="Voer de naam van de modal in" value="{{ modal.nameModal|default('') }}">
+						<button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+					</div>
+					<div class="modal-body" data-modal-id="{{ modal.id }}" style="color: black;">
+						{% for question in modal.getModalQuestions() %}
+							<div>
+								{{ question.getQuestion() }}
+							</div>
+						{% endfor %}
+					</div>
+					<div class="modal-footer">
+						<button class="delete-modal-btn btn btn-danger btn-sm me-2 ms-2" data-modal-id="{{ modal.id }}">X</button>
+						<button type="button" class="btn btn-primary saveModalButton" data-modal-id="{{ modal.id }}">
+							Opslaan
+						</button>
+					</div>
+				</div>
+			</div>
+		</div>
+	{% endfor %}
+</div>

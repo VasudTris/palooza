@@ -1,0 +1,48 @@
+{# base.html.twig #}
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+		<title>
+			{% block title %}
+				Poll-a-palooza
+			{% endblock %}
+		</title>
+		<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" integrity="sha512-..." crossorigin="anonymous" referrerpolicy="no-referrer"/>
+		<link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 128 128%22><text y=%221.2em%22 font-size=%2296%22>⚫️</text><text y=%221.3em%22 x=%220.2em%22 font-size=%2276%22 fill=%22%23fff%22>sf</text></svg>">
+		
+		<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous"/>
+		<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+
+		<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+		<script src="https://cdnjs.cloudflare.com/ajax/libs/jqPlot/1.0.9/jquery.jqplot.min.js"></script>
+
+	</head>
+	<body>
+		{% include '/partials/background.html.twig' %}
+		{#! zorgt dat burgermenu niet op login pagina weergeven word #}
+		{% if burger is not defined or burger %}
+			{% include '/partials/burger.html.twig' %}
+		{% endif %}
+		{% block body %}{% endblock %}
+
+		{% block javascripts %}
+			<!-- Bootstrap JavaScript Libraries -->
+			<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js" integrity="sha384-I7E8VVD/ismYTF4hNIPjVp/Zjvgyol6VFvRkX/vR+Vc4jQkC+hVqc2pM8ODewa9r" crossorigin="anonymous"></script>
+			<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.min.js" integrity="sha384-BBtl+eGJRgqQAUMxJ7pMwbEyER4l1g+O15P+16Ep7Q9Q+zqX6gSbd85u4mG4QzX+" crossorigin="anonymous"></script>
+			<!-- Voeg dit vlak voor de sluitende </body>-tag toe om Bootstrap JavaScript-functionaliteit te gebruiken -->
+			<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.7/dist/umd/popper.min.js"></script>
+			<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.min.js"></script>
+
+			<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+		{% endblock %}
+		{% block stylesheets %}
+			<link rel="stylesheet" href="{{ asset('assets/css/base.css?v=1.1') }}">
+			<link rel="stylesheet" href="{{ asset('assets/css/background.css?v=1.2') }}">
+		{% endblock %}
+		<script src="{{ asset('assets/js/background.js?v=1.2') }}"></script>
+		<script src="{{ asset('assets/js/jquery.min.js?v=1.2') }}"></script>
+		<script src="{{ asset('assets/js/burger.js?v=1.1') }}"></script>
+	</body>
+</html>

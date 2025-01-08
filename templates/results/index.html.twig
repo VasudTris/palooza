@@ -1,0 +1,103 @@
+{# child.html.twig #}
+{% extends 'base.html.twig' %}
+{% block title %}
+	Poll-a-palooza
+{% endblock %}
+{% block body %}
+	<div class="container">
+		<div class="row">
+			<div class="col-md-12">
+				<center>
+					{# <button id="nieuwPollBtn" class="btn btn-primary">
+						Nieuw poll
+					</button> #}
+					{% if vragen|length > 0 %}{#!  check of er een poll is & toont vraag van poll #}
+						<div class="">
+							<h1 class="fs-2 fs-sm-3 fs-md-1 text-center">
+								{{ vragen[0] }}
+							</h1>						
+						{% else %}
+							<p>
+								hey! je hebt nog geen poll toegevoegd...
+							</p>
+						</div>
+					{% endif %}
+
+				</center>
+			</div>
+		</div>
+		{% if vragen|length  > 0 and stemmen|length > 0 %}
+		<h3>
+			Stem resultaten
+		</h3>
+			<div class="row">
+				<div class="col-md-12">
+					<ul id="resultsList" class="list-unstyled"> {#! hier worden resultaten geladen #}
+						{% for waarde, stem in stemmen %}
+							<li>
+								{{ waarde }}
+								:
+								{{ stem }}
+								stemmen
+							</li>
+						{% endfor %}
+					</ul>
+				</div>
+			</div>
+			<div class="row">
+				<div class="col-md-12">
+					<button id="reset" class="btn btn-danger">
+						wis stemmen
+					</button>
+				</div>
+			</div>
+		{% endif %}
+		<div class="row">
+			<div class="col-md-12">
+			    
+			</div>
+		</div>
+	</div>
+{% endblock %}
+{% block javascripts %}
+<script src="{{ asset('assets/js/chart.js') }}"></script>
+{# <script src="{{ asset('assets/js/newPoll.js?v=1.1') }}"></script> #}
+<script>
+{#! pakt stem resultaten op #}
+async function fetchResults() {
+	try {
+		const response = await fetch('{{ path('result') }}');
+		if (!response.ok) {
+			throw new Error('Netwerkfout: ' + response.statusText);
+		}
+		const data = await response.json();
+		console.log('Gegevens ontvangen:', data);
+		return data;
+	} catch (error) {
+		console.error('Fout bij ophalen gegevens:', error);
+		return {};
+	}
+}
+
+$(document).ready(function () {
+    updateChart(); 
+   // setInterval(updateChart, 1000);
+
+    //voor resetten stemmen
+    $('#reset').click(function () {
+        $.ajax({
+            url: '{{ path('reset') }}',
+            type: 'POST',
+            success: function () {
+                updateChart(); 
+            }
+        });
+    });
+});
+</script>
+{% endblock %}
+{% block stylesheets %}
+	{{ parent() }}
+	<link rel="stylesheet" href="{{ asset('assets/css/home.css?v=1.2') }}">
+	<link rel="stylesheet" href="{{ asset('assets/css/bar.css?v=1.2') }}">
+{% endblock %}

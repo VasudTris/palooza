@@ -1,0 +1,28 @@
+<h1 class="h3 mb-3 font-weight-normal">Registratie</h1>
+<form action="{{ path('app_register') }}" method="post">
+        <label for="username" class="form-label">Gebruikersnaam</label>
+        <input type="text" id="username" name="username" class="form-control" required>
+        {% if errors.username is defined %}
+            <div class="text-danger">{{ errors.username }}</div>
+        {% endif %}
+
+        <label for="email" class="mt-2 form-label">Email</label>
+        <input type="email" id="email" name="email" class="form-control" required>
+        {% if errors.email is defined %}
+            <div class="text-danger">{{ errors.email }}</div>
+        {% endif %}
+
+        <label for="password" class="mt-2 form-label">Wachtwoord</label>
+        <input type="password" id="password" name="password" class="form-control" required>
+        {% if errors.password is defined %}
+            <div class="text-danger">{{ errors.password }}</div>
+        {% endif %}
+
+        <label for="confirm_password" class="mt-2 form-label">Bevestig Wachtwoord</label>
+        <input type="password" id="confirm_password" name="confirm_password" class="form-control" required>
+        {% if errors.confirm_password is defined %}
+            <div class="text-danger">{{ errors.confirm_password }}</div>
+        {% endif %}
+
+    <button type="submit" class="btn btn-lg btn-primary mt-3">Registreren</button>
+</form>

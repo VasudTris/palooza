@@ -1,0 +1,223 @@
+@import "https://unpkg.com/open-props";
+.vraag {
+    font-size: 80px;
+}
+
+#nieuwPollBtn {
+    width: 590px;
+    height: 100px;
+    max-width: 100%;
+    max-height: 100%;
+    background-color: #464cc6;
+    border-top-left-radius: 0%;
+    border-top-right-radius: 0%;
+    border: none;
+    box-shadow: 0px 1px 1px 0px rgba(0, 0, 0, 1);
+    cursor: pointer;
+    display: block;
+    text-align: center;
+    margin: 0 auto;
+    transition: all 0.3s ease;
+    font-size: 34px;
+
+}
+
+@media (max-width: 768px) {
+    #nieuwPollBtn {
+        width: 300px;
+        height: 70px;
+    }
+}
+
+.modal {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    background: #4e54c8;
+    height: 100%;
+    z-index: 1000;
+}
+
+.modal-content {
+    background: -webkit-linear-gradient(to left, #8f94fb, #4e54c8);
+    background: #4e54c8;
+    color: aliceblue;
+    margin: 0 auto;
+    /* centraal uitlijnen */
+    padding: 20px;
+    box-shadow: 1px 3px 4px rgba(0, 1, 1, 2);
+    width: 590px;
+    max-width: 100%;
+    max-height: 80vh;
+    /* maximale hoogte instellen */
+    overflow-y: auto;
+    /* scrollen als de inhoud te groot is */
+    border-radius: 10px;
+    position: relative;
+    top: -150px;
+    /* bbegin net buiten het zicht bovenaan */
+    transition: transform 0.7s ease-in-out;
+}
+
+/* Scrollbar styling */
+.modal-content::-webkit-scrollbar {
+    width: 10px;
+    height: 5px;
+}
+
+.modal-content::-webkit-scrollbar-track {
+    border-radius: 10px;
+    background: #444;
+    box-shadow: 0 0 1px 1px #111, inset 0 0 4px rgba(0, 0, 0, 0.3);
+    margin: 30px 0 30px;
+}
+
+.modal-content::-webkit-scrollbar-thumb {
+    border-radius: 10px;
+    background: linear-gradient(to left, #3e3e3e, #111, #000);
+    box-shadow: inset 0 0 1px 1px #646464;
+}
+
+/* Zorgt ervoor dat de modal-content beweegt bij activering */
+.modal.active .modal-content {
+    transform: translateY(100px);
+}
+
+.close {
+    margin-top: 30px;
+    color: #aaa;
+    float: right;
+    font-size: 28px;
+    font-weight: bold;
+}
+
+@media (max-width: 768px) {
+    .modal-content {
+        width: 90%;
+    }
+}
+
+.close:hover,
+.close:focus {
+    color: black;
+    text-decoration: none;
+    cursor: pointer;
+}
+
+.extraAntwoord-container {
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+.extraAntwoord {
+    width: 35px;
+    height: 33px;
+    border-radius: 50%;
+    background-color: transparent;
+    border: 2px solid aliceblue;
+    color: aliceblue;
+    font-size: 24px;
+    /* Zorg ervoor dat de font-size in verhouding staat tot de knopgrootte */
+    line-height: 1;
+    /* Zet de line-height op 1 om te voorkomen dat de hoogte de uitlijning beïnvloedt */
+    display: flex;
+    /* Flexbox gebruiken om de inhoud te centreren */
+    justify-content: center;
+    /* Horizontaal centreren */
+    align-items: center;
+    /* Verticaal centreren */
+    padding-bottom: 5px;
+    cursor: pointer;
+    outline: none;
+    transition: background-color 0.3s ease;
+}
+
+.extraAntwoord:hover {
+    background-color: rgba(0, 0, 0, 0.1);
+}
+
+
+.form-group {
+    margin-bottom: 15px;
+}
+
+.form-group label {
+    margin-top: 10px;
+    display: block;
+    
+}
+
+.form-group input {
+    width: 100%;
+    padding: 10px;
+    border-radius: 5px;
+}
+
+@media (max-width: 768px) {
+    .modal-content {
+        width: 90%;
+        max-width: none;
+        margin: 10% auto;
+    }
+}
+
+.buttonModal{
+    display: flex;            
+    justify-content: center;
+}
+
+.opslaanBtn {
+    font-family: var(--font-sans);
+    font-weight: var(--font-weight-6);
+    color: var(--gray-8);
+    background: var(--gray-0);
+    border: 0;
+    padding: var(--size-4) var(--size-8);
+    transform: translateY(calc(var(--y, 0) * 1%)) scale(var(--scale));
+    transition: transform 0.1s;
+    position: relative;
+    border-radius: 15px;
+  }
+  
+  .opslaanBtn:hover {
+    --y: -10;
+    --scale: 1.1;
+    --border-scale: 1;
+  }
+  
+  .opslaanBtn:active {
+    --y: 5%;
+    --scale: 0.9;
+    --border-scale: 0.9, 0.8;
+  }
+  
+  .opslaanBtn:before {
+    border-radius: 15px;
+    content: "";
+    position: absolute;
+    inset: calc(var(--size-3) * -1);
+    border: var(--size-2) solid var(--gray-0);
+    transform: scale(var(--border-scale, 0));
+    transition: transform 0.125s;
+    
+    --angle-one: 105deg;
+    --angle-two: 290deg;
+    --spread-one: 30deg;
+    --spread-two: 40deg;
+    --start-one: calc(var(--angle-one) - (var(--spread-one) * 0.5));
+    --start-two: calc(var(--angle-two) - (var(--spread-two) * 0.5));
+    --end-one: calc(var(--angle-one) + (var(--spread-one) * 0.5));
+    --end-two: calc(var(--angle-two) + (var(--spread-two) * 0.5));
+    
+    mask: conic-gradient(
+      transparent 0 var(--start-one),
+      white var(--start-one) var(--end-one),
+      transparent var(--end-one) var(--start-two),
+      white var(--start-two) var(--end-two),
+      transparent var(--end-two)
+    );
+    
+    z-index: -1;
+  }

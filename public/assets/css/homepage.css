@@ -1,0 +1,163 @@
+.row-container {
+    gap: 1rem;
+}
+
+
+.questions {
+    background-color: black;
+    width: 30rem;
+    height: 35rem;
+    max-height: 100%;
+
+    padding-left: 1rem;
+}
+
+.small-modal {
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    width: 200px;
+    height: 200px;
+    background-color: rgba(0, 123, 255, 0.5);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    color: white;
+    text-align: center;
+    font-size: 18px;
+}
+
+.modal {
+    color: black;
+    
+}
+
+.nothingMessage {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+}
+
+.round-button {
+    width: 60px;
+    height: 60px;
+    background-color: transparent;
+    border: 2px solid white;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    position: relative;
+    margin-left: 70px;
+    margin-top: 70px;
+}
+
+#modalsContainer {
+    display: flex;
+    flex-wrap: wrap;
+    margin-top: 20px;
+    margin-left: 30px;
+
+    overflow-x: auto;
+    justify-content: flex-start;
+    margin-bottom: 4rem;
+}
+
+@media (max-width: 768px) {
+    #modalsContainer {
+        margin-left: 15px;
+        gap: 40px;
+    }
+}
+
+.dragging {
+    opacity: 0.5;
+}
+
+.drag-over {
+    border: 2px dashed #007bff;
+}
+
+.plus {
+    font-size: 24px;
+    color: white;
+    line-height: 1;
+}
+
+.vragen {
+    padding: 10px;
+    overflow-y: auto;
+    height: 24rem;
+    max-height: 100%;
+}
+
+ul {
+    padding-left: 0;
+    list-style-type: none;
+}
+
+.bg-purple {
+    background-color: purple;
+    color: white;
+}
+
+
+ul li {
+    list-style-type: none;
+    margin-bottom: 10px;
+}
+
+.modals {
+    background-color: black;
+    width: 51rem;
+    height: 35rem;
+    padding-left: 1rem;
+    overflow: hidden;
+    transition: max-height 0.5s ease-in-out;
+    max-height: 0;
+    overflow-y: auto;
+    max-height: 100%;
+}
+
+@media (max-width: 768px) {
+
+    .modals,
+    .questions {
+        width: 100%;
+        height: auto;
+    }
+}
+
+@media (min-width: 1550px) {
+
+    .modals {
+        width: 65vh;
+        height: 65rem;
+    }
+
+    .questions {
+        width: 25vw;
+        height: 65rem;
+        
+    }
+}
+
+#addQuestionBtn {
+    display: none;
+}
+
+.collapse {
+    overflow: hidden;
+    transition: max-height 0.5s ease-in-out;
+    max-height: 0;
+    overflow-y: auto;
+    max-height: 100%;
+
+}
+
+.collapse.show {
+    max-height: 10rem;
+}

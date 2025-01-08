@@ -1,0 +1,39 @@
+<form method="POST" action="{{ path('app_inlog') }}">
+	{% if error %}
+		<div class="alert alert-danger">
+			{{ error.messageKey|trans(error.messageData, 'security') }}
+		</div>
+	{% endif %}
+	<h1 class="h3 mb-3 font-weight-normal">
+		Login
+	</h1>
+	<label for="inputUsername">
+		Gebruikersnaam
+	</label>
+	<input type="text" name="username" id="inputUsername" class="form-control" autocomplete="username" required autofocus>
+	<label class="mt-2" for="inputPassword">
+		Wachtwoord
+	</label>
+	<input type="password" name="password" id="inputPassword" class="form-control" autocomplete="current-password" required>
+	<input type="hidden" name="_csrf_token" value="{{ csrf_token('authenticate') }}">
+	<button class="btn btn-lg btn-primary mt-3" type="submit">
+		inloggen
+	</button>
+</form>
+<div class="text-center mt-4">
+	<p>
+		of login met:
+	</p>
+	<button type="button" class="btn btn-link btn-floating mx-1">
+		<i class="fab fa-facebook-f"></i>
+	</button>
+	<button type="button" class="btn btn-link btn-floating mx-1">
+		<i class="fab fa-google"></i>
+	</button>
+	<button type="button" class="btn btn-link btn-floating mx-1">
+		<i class="fab fa-twitter"></i>
+	</button>
+	<button type="button" class="btn btn-link btn-floating mx-1">
+		<i class="fab fa-github"></i>
+	</button>
+</div>

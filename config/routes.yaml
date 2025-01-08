@@ -1,0 +1,8 @@
+controllers:
+    resource: ../src/Controller/
+    type: attribute
+app_logout:
+    path: /app_logout
+
+
+

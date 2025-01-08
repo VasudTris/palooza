@@ -1,0 +1,47 @@
+.area {  
+    background: -webkit-linear-gradient(to left, #8f94fb, #4e54c8);
+    background: #4e54c8;
+    width: 100%;
+    height: 100%;
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: -1; /* zodat inhoud boven de achtergrond zit*/
+    overflow: hidden;
+}
+
+.circles {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+    z-index: -1; /* zorgt ervoor dat cirkelonder de inhoud liggen */
+}
+
+.circles li {
+    position: absolute;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    list-style: none;
+    background: rgba(255, 255, 255, 0.2);
+    font-size: calc(2 * 100%);
+    bottom: -150px;
+}
+
+@keyframes animate {
+    0% {
+        transform: translateY(0) rotate(var(--rotate));
+        opacity: 1;
+        border-radius: 0;
+    }
+    100% {
+        transform: translateY(-1000px) rotate(calc(var(--rotate) + 720deg));
+        opacity: 0;
+        border-radius: 50%;
+    }
+}
+
+

@@ -1,0 +1,50 @@
+{# child.html.twig #}
+{% extends 'base.html.twig' %}
+{% set burger = false %}
+{% block title %}
+	Poll-a-palooza
+{% endblock %}
+{% block body %}
+	<div class="container px-4 py-5 px-md-5 text-center text-lg-start my-5">
+		<div class="row gx-lg-5 align-items-center mb-5">
+			<div class="col-lg-6 mb-5 mb-lg-0" style="z-index: 10">
+				<h1 class="my-5 display-5 fw-bold ls-tight" style="color: hsl(218, 81%, 95%)">
+					This is
+					<br/>
+					<span style="color: hsl(218, 81%, 75%)">
+						Poll-a-palooza
+					</span>
+				</h1>
+				<p class="mb-4 opacity-70" style="color: hsl(218, 81%, 85%)">
+					By logging in you agree to the ridiculously long terms that you didn't bother to read
+				</p>
+			</div>
+			<div class="col-lg-6 mb-5 mb-lg-0 position-relative">
+				<div class="card bg-glass">
+					<div
+						class="card-body px-4 py-5 px-md-5">
+						{#! hier dde 2 forms voor inloggen en acc aanmaken, gebruiker kan via button switchen tussen de 2 forms. #}
+						<div id="login-form">
+							{% include '/security/login.html.twig' %}
+						</div>
+						<div id="register-form" style="display:none;">
+							{% include '/security/addAcc.html.twig' %}
+						</div>
+						<div class="text-center mt-4">
+							<button id="toggle-button" class="btn btn-link">
+								Geen account?
+							</button>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+{% endblock %}
+{% block javascripts %}
+	<script src="{{ asset('assets/js/switchForm.js?v=1.1') }}"></script>
+{% endblock %}
+{% block stylesheets %}
+	{{ parent() }}
+	<link rel="stylesheet" href="{{ asset('assets/css/login.css?v=1.2') }}">
+{% endblock %}

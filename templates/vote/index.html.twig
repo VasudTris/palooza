@@ -1,0 +1,72 @@
+{# child.html.twig #}
+{% extends 'base.html.twig' %}
+{% block title %}
+	Poll-a-palooza
+{% endblock %}
+{% block body %}
+	{% include '/partials/background.html.twig' %}
+	<div class="container">
+		<div class="row">
+			<div class="col-sd-12">
+				<center>
+					<h1 class="fs-2 fs-sm-3 fs-md-1 text-center">
+						{{ vragen[0] }}
+					</h1>
+				</center>
+			</div>
+		</div>
+		<div class="row">
+			<div class="col-sd-12 d-flex justify-content-center align-items-center">
+				{% if waarden is not empty %}
+					<ul>
+						{% for waarde in waarden %}
+							<li>
+								{{ waarde|e }}
+								<input type="radio" name="vote" value="{{ waarde|e }}"></li>
+						{% endfor %}
+					</ul>
+				{% endif %}
+			</div>
+		</div>
+		<div class="row">
+			<div class="col-sd-12 d-flex justify-content-center align-items-center">
+				<button id="submit" class="btn btn-primary">
+					!Send vote!
+				</button>
+			</div>
+		</div>
+	</div>
+{% endblock %}
+{% block javascripts %}
+	<script>
+		{#! verstuurd stem #}
+		$(document).ready(function () {
+			$('#submit').click(function () {
+				
+				var waarde = $('input[name="vote"]:checked').val();
+				if (waarde) {
+					$.ajax({
+						url: '{{ path('vote') }}',
+						type: 'POST',
+						data: {
+							vote: waarde
+						},
+						success: function () {
+							updateChart();
+						
+						},
+						error: function (xhr, status, error) {
+							console.error('Fout bij verzenden stem:', status, error);
+							console.error('Response:', xhr.responseText);
+						}
+					});
+				} 
+			});
+		});
+	</script>
+{% endblock %}
+{% block stylesheets %}
+	{{ parent() }}
+	<link rel="stylesheet" href="{{ asset('assets/css/vote.css?v=1.2') }}">
+	<link rel="stylesheet" href="{{ asset('assets/css/background.css?v=1.2') }}">
+{% endblock %}

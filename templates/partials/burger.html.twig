@@ -1,0 +1,64 @@
+<nav class="cdpn-mobile-menu js-cdpn-mobile-menu">
+  <div id="cdpn-mobile-menu" class="cdpn-mobile-menu__container d-flex justify-content-center align-items-center" style="height: 700px;">
+    <ul class="cdpn-mobile-menu__list ra-list list-unstyled text-center">
+      <li>
+        <a href="#0" class="box-3">
+          <div class="btn btn-three">
+            <span class="a">
+              Account
+            </span>
+          </div>
+        </a>
+      </li>
+      <li>
+        <a href="#0" class="box-3">
+          <div class="btn btn-three">
+            <span class="a">
+              Favorieten
+            </span>
+          </div>
+        </a>
+      </li>
+      <li>
+        <a href="#0" class="box-3">
+          <div class="btn btn-three">
+            <span class="a">
+              Abbonementen
+            </span>
+          </div>
+        </a>
+      </li>
+      <li>
+        <a href="#0" class="box-3">
+          <div class="btn btn-three">
+            <span class="a">
+              FAQ
+            </span>
+          </div>
+        </a>
+      </li>
+      <li>
+        <a href="#0" class="box-3">
+        <form action="{{ path('app_logout') }}" method="post">
+        <button type="submit" class="btn btn-three btn-danger">
+          Uitloggen
+        </button>  
+      </form>
+        </a>
+      </li>
+    </ul>
+  </div>
+  <button class="cdpn-mobile-menu__toggle js-cdpn-mobile-menu__toggle uia-control ra-button" type="button" aria-controls="cdpn-mobile-menu" data-uia-hamburger-skin="2">
+    <span class="uia-control__group">
+      <span class="cdpn-mobile-menu__hamburger uia-control__icon uia-hamburger">
+        <span class="uia-hamburger__group">
+          <span class="uia-hamburger__label">
+            <span class="js-cdpn-mobile-menu__toggle-hint ha-screen-reader">
+              Open menu
+            </span>
+          </span>
+        </span>
+      </span>
+    </span>
+  </button>
+</nav>
